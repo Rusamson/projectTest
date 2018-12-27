@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+ <div id="call_wondow">f
+ </div>
+<div id="info_wondow"> 
+MOre info
+</div>
+<div id="map_wondow">
+Map Here
+</div>
+<div id="trigger_wondow"></div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+var previous = "";
+var current = "";
+var skipFirst = 0;
+
+setInterval(function(){  
+   current = $("#trigger_wondow").html() ;
+ if(current.length > 0){
+	 $("#call_wondow").toggle();
+	// alert(current);  
+	 //$("#call_wondow").toggle();
+	 $("#trigger_wondow").text("") 
+	 //current ="";
+ } 
+
+
+}, 1000);
+
+setInterval(function(){  
+	   current = $("#trigger_wondow").text("dfsgfssg") ; 
+	}, 8000);
+	
+</script>
