@@ -23,11 +23,11 @@ import samson.model.Booking;
 public class BookingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Map<String, Booking> bookingCache = new HashMap<String, Booking>();  
-	Booking b1 = new Booking("0","1","2","pending",true,"2019/01/24 12:12:00"," premade 1");
-	Booking b2 = new Booking("1","1","2","accepted",true,"2019/01/24 12:12:00"," premade 2");
-	Booking b3 = new Booking("2","1","2","cancelled",true,"2019/01/24 12:12:00"," premade 3");
-	Booking b4 = new Booking("3","1","2","pending",false,"2019/01/24 12:12:00"," premade 4");
-	Booking b5 = new Booking("4","1","2","pending",true,"","premade 5");
+	Booking b1 = new Booking("0","1","none","pending",true,"2019/01/24 12:12:00"," premade 1");
+	Booking b2 = new Booking("1","3","1","accepted",true,"2019/01/24 12:12:00"," premade 2");
+	Booking b3 = new Booking("2","2","3","cancelled",true,"2019/01/24 12:12:00"," premade 3");
+	Booking b4 = new Booking("3","1","none","pending",false,"2019/01/24 12:12:00"," premade 4");
+	Booking b5 = new Booking("4","2","none","pending",true,"NOW","premade 5");
 	
 	
 	

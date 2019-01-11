@@ -1,39 +1,163 @@
-<!DOCTYPE html>
-<html>
-<body>
 
- <div id="call_wondow">f
- </div>
-<div id="info_wondow"> 
-MOre info
-</div>
-<div id="map_wondow">
-Map Here
-</div>
-<div id="trigger_wondow"></div>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+	</script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+	</script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+ <br>
+				<div class="col-lg-6">
+				<a href="mobile_profile_owner/">
+				<div style="text-align:center">
+				 <img class="img-circle" height="40px" src="resources/img/"> 
+				 <br> Welcome <b> !</div>
+				</a>
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<i class="fa fa-list fa-fw"></i> History
+						</div>
+						<div class="panel panel-green" style="background:#FFF;">
+						
+				 
+						 <div class="alert alert-warning" >
+  					         fg
+				         </div> 
+				         <div class="result"> 
+				         </div>
+							 
+						</div>
+						<button type="button" class="cancelbtn " onclick="goBack()"> Back</button> 
+					</div> 
+				</div>
+
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-var previous = "";
-var current = "";
-var skipFirst = 0;
+<script> 
+//var userid =   '${sessionScope.sessionUser.id}' ;
+//var userType = '${sessionScope.sessionUser.type}';
 
-setInterval(function(){  
-   current = $("#trigger_wondow").html() ;
- if(current.length > 0){
-	 $("#call_wondow").toggle();
-	// alert(current);  
-	 //$("#call_wondow").toggle();
-	 $("#trigger_wondow").text("") 
-	 //current ="";
- } 
+var userid =   "1";
+var userType = "care";
+var myBookings = true;
 
-
-}, 1000);
-
-setInterval(function(){  
-	   current = $("#trigger_wondow").text("dfsgfssg") ; 
-	}, 8000);
+$.get( "http://localhost:8080/projectTest/booking?operation=all", function( data ) { 
+	//alert(data['0'].sourceId);
+	var bookings = data; 
+	var content = "";
+	//this will display a full list of bookings
+	if(userType == ""){
+	$('.alert').html("List of All bookings from the system");
+	 for(i = 0; i< bookings.length; i++){ 
+		 content = content+" Source: "+bookings[i].sourceId+" Target: "+bookings[i].targetId+" Time: "+bookings[i].time+" Status: "+bookings[i].status+" timestamp:  "+bookings[i].timestamp+" </br>";
+	 } 
+	}
 	
+   //this will display for a client
+	if(userType == "client"){
+		$('.alert').html("Client Side : List of My Bookings");
+		 for(i = 0; i< bookings.length; i++){ 
+			 if(bookings[i].sourceId == userid)
+			 content = content+" Source: "+bookings[i].sourceId+" Target: "+bookings[i].targetId+" Time: "+bookings[i].time+" Status: "+bookings[i].status+" timestamp:  "+bookings[i].timestamp+
+			 " | Cancel | Hide |"+
+			 "</br>";
+		 } 
+	 }
+	   //this will display for a care all his bookings
+	if(userType == "care" && myBookings == true){
+		$('.alert').html("Care Side : List of My Bookings");
+		 for(i = 0; i< bookings.length; i++){  
+			 if(bookings[i].targetId == userid)
+			 content = content+" Source: "+bookings[i].sourceId+" Target: "+bookings[i].targetId+" Time: "+bookings[i].time+" Status: "+bookings[i].status+" timestamp:  "+bookings[i].timestamp+
+			 "| Cancel | View Location"
+			 " </br>";
+		 } 
+	 }
+	    	
+	   //this will display for a care all available bookings
+	if(userType == "care"  && myBookings == false){
+		$('.alert').html("Care Side : List of Pending Bookings");
+		 for(i = 0; i< bookings.length; i++){ 
+			 if(bookings[i].status == "pending")
+			 content = content+" Source: "+bookings[i].sourceId+" Target: "+bookings[i].targetId+" Time: "+bookings[i].time+" Status: "+bookings[i].status+" timestamp:  "+bookings[i].timestamp+
+			 "|Accept|"+
+			 " </br>";
+		 } 
+	 }
+	  
+	 
+	 $( ".result" ).html(content);
+});
+function goBack() {
+    window.history.back();
+}
 </script>
