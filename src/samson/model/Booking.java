@@ -11,6 +11,7 @@ public class Booking {
 	private String status; 
 	private boolean visibility;
 	private String time;
+	private String location;
 	private String message;
 	private String timestamp;
 	
@@ -21,7 +22,7 @@ public class Booking {
 	}
    
 	
-	public Booking(String id, String sourceId, String targetId, String status, boolean visibility, String time, String message) {
+	public Booking(String id, String sourceId, String targetId, String status, boolean visibility, String time, String location, String message) {
 		//super();
 		this.id = id;
 		this.sourceId = sourceId;
@@ -29,15 +30,16 @@ public class Booking {
 		this.status = status;
 		this.visibility = visibility;
 		this.time = time;
+		this.location = location;
 		this.message = message;
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now(); 
+		LocalDateTime now = LocalDateTime.now();  
 		timestamp =  dtf.format(now);
 	}
 
 
-	public String getId() {
+	public String getId() { 
 		return id;
 	}
 
@@ -85,6 +87,16 @@ public class Booking {
 	public void setTime(String time) {
 		this.time = time;
 	}
+     
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 
 	public String getMessage() {
 		return message;

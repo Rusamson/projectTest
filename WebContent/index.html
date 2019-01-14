@@ -10,6 +10,9 @@
 	</script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
 	</script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/ > 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
@@ -76,6 +79,12 @@ span.psw {
 </head>
 <body>
  <br>
+ 
+ <button type="button" class="quickbtn" onclick="order('1','none','pending','NOW','53.34973157,-6.25808716','optional message');">Order Now !</button>
+ <input id="datetimepicker" type="text" >
+ Message (OPtional):
+ <input id="message" type="text" >
+  <button type="button" class="quickbtn" onclick="book('1','none','pending','53.34973157,-6.25808716');">Book in the Future</button>
 				<div class="col-lg-6">
 				<a href="mobile_profile_owner/">
 				<div style="text-align:center">
@@ -86,13 +95,10 @@ span.psw {
 						<div class="panel-heading">
 							<i class="fa fa-list fa-fw"></i> History
 						</div>
-						<div class="panel panel-green" style="background:#FFF;">
-						
-				 
-						 <div class="alert alert-warning" >
-  					         fg
+						<div class="panel panel-green" style="background:#FFF;"> 
+						 <div class="alert alert-warning" > 
 				         </div> 
-				         <div class="result"> 
+				         <div class="result">  
 				         </div>
 							 
 						</div>
@@ -103,22 +109,35 @@ span.psw {
 </body>
 </html>
 <script> 
+
+jQuery('#datetimepicker').datetimepicker({
+	// timepicker:false,
+	 mask:true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
+	});
+	
 //var userid =   '${sessionScope.sessionUser.id}' ;
 //var userType = '${sessionScope.sessionUser.type}';
 
-var userid =   "1";
-var userType = "care";
-var myBookings = true;
+var userid =   "";
+var userType = "";
+var myBookings = false;
+//var mylocation = 'https://www.google.com/maps/search/?api=1&query=28.6139,77.2090';
+
+function drawTable(){
 
 $.get( "http://localhost:8080/projectTest/booking?operation=all", function( data ) { 
 	//alert(data['0'].sourceId);
 	var bookings = data; 
-	var content = "";
-	//this will display a full list of bookings
+	var content = '<table id="table-1" class="table table-hover"><thead><tr><th>ID</th><th>Source</th><th>Target</th><th>Time</th><th>Status </th>'+
+	'<th>Timestamp </th><th>Location</th><th>Message</th><th class="text-center" style="width: 30%;">Actions</th></tr></thead><tbody>';
+	
 	if(userType == ""){
 	$('.alert').html("List of All bookings from the system");
 	 for(i = 0; i< bookings.length; i++){ 
-		 content = content+" Source: "+bookings[i].sourceId+" Target: "+bookings[i].targetId+" Time: "+bookings[i].time+" Status: "+bookings[i].status+" timestamp:  "+bookings[i].timestamp+" </br>";
+		 content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+'</td><td>'+bookings[i].targetId+
+		 '</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+'</td><td>'+bookings[i].timestamp+
+		 '</td><td> 5 Best Street , Dublin, Ireland  <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+
+				 '" > Navigate </a> </td><td>'+bookings[i].message+'</td><td> - </td>';
 	 } 
 	}
 	
@@ -127,9 +146,9 @@ $.get( "http://localhost:8080/projectTest/booking?operation=all", function( data
 		$('.alert').html("Client Side : List of My Bookings");
 		 for(i = 0; i< bookings.length; i++){ 
 			 if(bookings[i].sourceId == userid)
-			 content = content+" Source: "+bookings[i].sourceId+" Target: "+bookings[i].targetId+" Time: "+bookings[i].time+" Status: "+bookings[i].status+" timestamp:  "+bookings[i].timestamp+
-			 " | Cancel | Hide |"+
-			 "</br>";
+		   content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+'</td><td>'+bookings[i].targetId+
+		   '</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+'</td><td>'+bookings[i].timestamp+
+		   '</td><td> 5 Best Street , Dublin, Ireland  </td><td>'+bookings[i].message+'</td><td> <button onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button>  </td>';
 		 } 
 	 }
 	   //this will display for a care all his bookings
@@ -137,9 +156,11 @@ $.get( "http://localhost:8080/projectTest/booking?operation=all", function( data
 		$('.alert').html("Care Side : List of My Bookings");
 		 for(i = 0; i< bookings.length; i++){  
 			 if(bookings[i].targetId == userid)
-			 content = content+" Source: "+bookings[i].sourceId+" Target: "+bookings[i].targetId+" Time: "+bookings[i].time+" Status: "+bookings[i].status+" timestamp:  "+bookings[i].timestamp+
-			 "| Cancel | View Location"
-			 " </br>";
+				 content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+
+				 '</td><td>'+bookings[i].targetId+'</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+
+				 '</td><td>'+bookings[i].timestamp+
+				 '</td><td> 5 Best Street , Dublin, Ireland  <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+'" > Navigate </a>  </td><td>'+bookings[i].message+
+				 '</td><td> <button onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button>  </td>';
 		 } 
 	 }
 	    	
@@ -148,16 +169,58 @@ $.get( "http://localhost:8080/projectTest/booking?operation=all", function( data
 		$('.alert').html("Care Side : List of Pending Bookings");
 		 for(i = 0; i< bookings.length; i++){ 
 			 if(bookings[i].status == "pending")
-			 content = content+" Source: "+bookings[i].sourceId+" Target: "+bookings[i].targetId+" Time: "+bookings[i].time+" Status: "+bookings[i].status+" timestamp:  "+bookings[i].timestamp+
-			 "|Accept|"+
-			 " </br>";
+				 content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+'</td><td>'+bookings[i].targetId+
+				 '</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+'</td><td>'+bookings[i].timestamp+
+				 '</td><td>Dublin, Ireland  </td><td>'+bookings[i].message+'</td><td> <button onclick="accept('+bookings[i].id+','+userid+');">Accept </button> </td>';
 		 } 
 	 }
 	  
 	 
-	 $( ".result" ).html(content);
+	  $( ".result" ).html(content+'</tr></tbody></table>');
 });
+}
+
+
 function goBack() {
     window.history.back();
 }
+
+ function order(sourceId, targetId, status, time, location, message){ 
+ var parameters = "operation=add&sourceId="+sourceId+"&targetId="+targetId+"&status="+status+"&time="+time+"&location="+location+"&message="+message; 
+	 alert(name+" , You are about to Oreder a Care Professional.  Please Confirm");
+	    $.get("http://localhost:8080/projectTest/booking?"+parameters, function(data, status){
+	         alert(data); 
+	    });
+	    $("#msg").text("A Professional Care is on the way");
+ } 
+ 
+ function book(sourceId, targetId, status, location){ 
+	// alert($('#datetimepicker').val());
+	 var parameters = "operation=add&sourceId="+sourceId+"&targetId="+targetId+"&status="+status+"&time="+$('#datetimepicker').val()+"&location="+location+"&message="+$('#message').val(); 
+		 alert(name+" , You are about to Oreder a Care Professional.  Please Confirm"); 
+		    $.get("http://localhost:8080/projectTest/booking?"+parameters, function(data, status){
+		         
+		    });
+		    $("#msg").text("A Professional Care is on the way");
+	    drawTable();
+	 } 
+ function accept(bookingId, careId){
+	 var parameters ="operation=accept&bookingId="+bookingId+"&careId="+careId;
+	    $.get("http://localhost:8080/projectTest/booking?"+parameters, function(data, status){
+	           
+	    });
+	    drawTable();
+ }
+ 
+ function cancel(bookingId, userType){
+	
+	 var parameters ="operation=cancel&bookingId="+bookingId+"&userType="+userType;
+	// alert(parameters);
+	    $.get("http://localhost:8080/projectTest/booking?"+parameters, function(data, status){
+	           
+	    });
+	    drawTable();
+ }
+ 
+ drawTable();
 </script>
