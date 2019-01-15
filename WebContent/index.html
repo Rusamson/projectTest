@@ -75,6 +75,20 @@ span.psw {
        width: 100%;
     }
 }
+/*new list css */
+      #accordion .glyphicon { margin-right:10px; }
+      .panel-collapse>.list-group .list-group-item:first-child {border-top-right-radius: 0;border-top-left-radius: 0;}
+      .panel-collapse>.list-group .list-group-item {border-width: 1px 0;}
+      .panel-collapse>.list-group {margin-bottom: 0;}
+      .panel-collapse .list-group-item {border-radius:0;}
+
+      .panel-collapse .list-group .list-group {margin: 0;margin-top: 10px;}
+      .panel-collapse .list-group-item li.list-group-item {margin: 0 -15px;border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item:last-child {padding-bottom: 0;}
+
+      .panel-collapse div.list-group div.list-group{margin: 0;}
+      .panel-collapse div.list-group .list-group a.list-group-item {border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item {border-top: 1px solid #DDD !important;}
 </style>
 </head>
 <body>
@@ -82,10 +96,12 @@ span.psw {
  
  <button type="button" class="quickbtn" onclick="order('1','none','pending','NOW','53.34973157,-6.25808716','optional message');">Order Now !</button>
  <input id="datetimepicker" type="text" >
- Message (OPtional):
+  Care Number (OPtional , if empty means all, or you can add numbers with commas 5,6,20,12):
+ <input id="care" type="text" >
+ Message (Optional):
  <input id="message" type="text" >
   <button type="button" class="quickbtn" onclick="book('1','none','pending','53.34973157,-6.25808716');">Book in the Future</button>
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 				<a href="mobile_profile_owner/">
 				<div style="text-align:center">
 				 <img class="img-circle" height="40px" src="resources/img/"> 
@@ -93,19 +109,452 @@ span.psw {
 				</a>
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<i class="fa fa-list fa-fw"></i> History
+							<i class="fa fa-list fa-fw"></i> Bookings
 						</div>
 						<div class="panel panel-green" style="background:#FFF;"> 
 						 <div class="alert alert-warning" > 
-				         </div> 
-				         <div class="result">  
+				         </div>  
+				         <div class="result table-responsive-lg">  
 				         </div>
 							 
 						</div>
 						<button type="button" class="cancelbtn " onclick="goBack()"> Back</button> 
 					</div> 
 				</div>
+######################################################## LISTS STARTS
 
+
+<div class="container">
+    <div class="row">
+        <h1 class="page-header"><div class="crush">Category 1</div></h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+        
+            <div class="table-responsive">
+            
+                <table class="table table-sm table-hover">
+                  <thead class="thead-default">
+                  
+                    <tr class="add-category-row">
+                      <th style="width: 30px;">
+                        <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                            <span class="glyphicon glyphicon-plus green" aria-hidden="true"></span>
+                        </button> 
+                      </th>
+                      
+                      
+                      <th colspan="2">Add Checklist</th>
+                      
+                      <th style="width: 70px;"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                  
+                   <tr class="category-row">
+                      <th style="width: 30px;">
+                        <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                            <span class="glyphicon glyphicon-plus green" aria-hidden="true"></span>
+                        </button> 
+                      </th>
+                      
+                      <th style="width: 30px;">
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button> 
+                        </th>
+                      
+                      <th style="text-align: center;">Checklist1: MAKE SURE EVERYONE IS CLEAR FROM MOVING PARTS AND PROCEED WITH THE FOLLOWING:</th>
+                      
+                      <th style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button> 
+                      </th>
+                    </tr>
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Put all controls in neutral position.</td>
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Start drill.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">After warming up drill to a normal operating temperature proceed to check oil pressure and battery voltage.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list green-bg" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+               
+ 
+<!-- Questions Section -->
+
+                    <tr class="success">
+                        <td colspan="4">
+                             <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Question
+                            </button>     
+                        </td>
+                    </tr>
+
+                    <tr class="warning">
+                        <td colspan="3">
+                            <div class="row q_row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-9">
+                                    <span>Do you really need to do this?</span>
+                                </div>
+                               <!--  
+                                <div class="col-lg-2">
+                                    <div class="btn-group pull-right" role="group" aria-label="...">
+                                      <button type="button" class="btn btn-danger btn-xs">Good</button>
+                                      <button type="button" class="btn btn-default  btn-xs">UA</button>
+                                    </div>
+                                </div>
+                                -->
+                                
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                    <tr class="warning">
+                        <td colspan="3">
+                            <div class="row q_row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-9">
+                                    <span>Do you really need to do this?</span>
+                                </div>
+                                <!--
+                                <div class="col-lg-2">
+                                    <div class="btn-group pull-right" role="group" aria-label="...">
+                                      <button type="button" class="btn btn-default btn-xs">Good</button>
+                                      <button type="button" class="btn btn-danger btn-xs">UA</button>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                    
+<!-- end question section -->
+               
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Visually inspect equipment for obvious oil leaks.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                 
+                   <tr class="category-row">
+                      <th style="width: 30px;">
+                        <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                            <span class="glyphicon glyphicon-plus green" aria-hidden="true"></span>
+                        </button> 
+                      </th>
+                      
+                      <th style="width: 30px;">
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button> 
+                        </th>
+                      
+                      <th style="text-align: center;">Checklist 2: SHUTDOWN PROCEDURE (IN EVENT OF VISIBLE OIL LEAKS)</th>
+                      
+                      <th style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button> 
+                      </th>
+                    </tr>
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Immediately turn off drill if a major leak is present and follow the Emergency
+
+Spill Response Plan.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr> 
+
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">In the event of a small oil leak, allow motor to cool for 5 minutes before turning
+
+off.</td>
+
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button>  
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>                  
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">De­energize drilling equipment prior to repairs.</td>
+
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>                  
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Follow proper lockout/tagout procedures to ensure equipment is safe for repair
+
+(refer to WI­59 Safety – Lock Out, Tag Out; Surface).</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>                    
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Report any defects on the machine to your supervisor and include in this
+
+report.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>                  
+                  
+                </tbody>
+                </table>
+    
+            </div>
+        </div>
+    </div>    
+        
+    
+</div>
+
+################################################################## an other list 
+
+<div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
+                    </span>Content</a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <ul class="list-group">
+                  <li class="list-group-item"><span class="glyphicon glyphicon-pencil text-primary"></span><a href="http://fb.com/moinakbarali">Articles</a>
+                    <ul class="list-group">
+                      <li class="list-group-item"><span class="glyphicon glyphicon-pencil text-primary"></span><a href="http://fb.com/moinakbarali">Articles</a></li>
+
+                      <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="http://fb.com/moinakbarali">News</a></li>
+
+                      <li class="list-group-item"><span class="glyphicon glyphicon-file text-info"></span><a href="http://fb.com/moinakbarali">Newsletters</a></li>
+
+                      <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="http://fb.com/moinakbarali">Comments</a><span class="badge">42</span></li>
+
+                    </ul>
+                  </li>
+
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="http://fb.com/moinakbarali">News</a></li>
+
+                  <li class="list-group-item"><span class="glyphicon glyphicon-file text-info"></span><a href="http://fb.com/moinakbarali">Newsletters</a></li>
+
+                  <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="http://fb.com/moinakbarali">Comments</a><span class="badge">42</span></li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                    </span>Reports</a>
+                </h4>
+              </div>
+              <div id="collapseFour" class="panel-collapse collapse">
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    Cras justo odio
+                  </a>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item">
+                      Cras justo odio
+                    </a>
+                    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item">Morbi leo risus</a>
+                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+                  </div>
+                  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item">Morbi leo risus</a>
+                  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item">Vestibulum at eros</a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-heart">
+                    </span>Reports</a>
+                </h4>
+              </div>
+              <div id="collapseFive" class="panel-collapse collapse">
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  </a>
+                </div>
+                <div class="list-group">
+                  <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  </a>
+                </div>
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9 col-md-9">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dashboard</h3>
+            </div>
+            <div class="panel-body">
+              <p>Admin Dashboard Accordion List Group Menu</p>
+              <div class="alert alert-success"><h3>Yes! It's compatible with BS 3.0.3, 3.1 & 3.2 </h3></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 </body>
 </html>
 <script> 
