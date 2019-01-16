@@ -554,6 +554,36 @@ report.</td>
         </div>
       </div>
     </div>
+    #########################################
+    <div class="panel-group" id="accordion">
+    <div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel1"><i class="glyphicon glyphicon-minus"></i>
+    Panel 1
+    </a></h4></div><div id="panel1" class="panel-collapse collapse in"><div class="panel-body">
+    Contents panel 1
+    </div></div></div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel2"><i class="glyphicon glyphicon-plus"></i>Panel 2</a>
+            </h4>
+
+        </div>
+        <div id="panel2" class="panel-collapse collapse">
+            <div class="panel-body">Contents panel 2</div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel3"><i class="glyphicon glyphicon-plus"></i>Panel 3</a>
+            </h4>
+
+        </div>
+        <div id="panel3" class="panel-collapse collapse">
+            <div class="panel-body">Contents panel 3</div>
+        </div>
+    </div>
+</div>
     
 </body>
 </html>
@@ -567,65 +597,84 @@ jQuery('#datetimepicker').datetimepicker({
 //var userid =   '${sessionScope.sessionUser.id}' ;
 //var userType = '${sessionScope.sessionUser.type}';
 
-var userid =   "";
-var userType = "";
-var myBookings = false;
+var userid =   "1";
+var userType = "care";
+var myBookings = true;
+var content =  "";
 //var mylocation = 'https://www.google.com/maps/search/?api=1&query=28.6139,77.2090';
 
 function drawTable(){
 
 $.get( "http://localhost:8080/projectTest/booking?operation=all", function( data ) { 
 	//alert(data['0'].sourceId);
-	var bookings = data; 
-	var content = '<table id="table-1" class="table table-hover"><thead><tr><th>ID</th><th>Source</th><th>Target</th><th>Time</th><th>Status </th>'+
-	'<th>Timestamp </th><th>Location</th><th>Message</th><th class="text-center" style="width: 30%;">Actions</th></tr></thead><tbody>';
+	var bookings = data;  
 	
-	if(userType == ""){
+	if(userType == "system"){
 	$('.alert').html("List of All bookings from the system");
+	  content = '<table id="table-1" class="table table-hover"><thead><tr><th>ID</th><th>Source</th><th>Target</th><th>Time</th><th>Status </th>'+
+	'<th>Timestamp </th><th>Location</th><th>Message</th><th class="text-center" style="width: 30%;">Actions</th></tr></thead><tbody>';
 	 for(i = 0; i< bookings.length; i++){ 
 		 content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+'</td><td>'+bookings[i].targetId+
 		 '</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+'</td><td>'+bookings[i].timestamp+
 		 '</td><td> 5 Best Street , Dublin, Ireland  <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+
 				 '" > Navigate </a> </td><td>'+bookings[i].message+'</td><td> - </td>';
 	 } 
+	 content+'</tr></tbody></table>'
 	}
 	
    //this will display for a client
 	if(userType == "client"){
 		$('.alert').html("Client Side : List of My Bookings");
+		  content = '<div class="panel-group" id="accordion">';
 		 for(i = 0; i< bookings.length; i++){ 
-			 if(bookings[i].sourceId == userid)
-		   content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+'</td><td>'+bookings[i].targetId+
-		   '</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+'</td><td>'+bookings[i].timestamp+
-		   '</td><td> 5 Best Street , Dublin, Ireland  </td><td>'+bookings[i].message+'</td><td> <button onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button>  </td>';
+			 if(bookings[i].sourceId == userid){ 
+			 content = content+'<div class="panel panel-primary"><div class="panel-heading"> <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel'+bookings[i].id+'"><i class="glyphicon glyphicon-plus"></i>';
+			 content = content+bookings[i].time+' -  '+bookings[i].status;
+			 content = content+'</a></h4></div>';
+			 content = content+'<div id="panel'+bookings[i].id+'" class="panel-collapse collapse"><div class="panel-body">';
+			 content = content+'booking ID: '+bookings[i].id+'<br> Message: '+bookings[i].message+'<br> Address : 5 Best Street , Dublin, Ireland <br> Action: <button type="button" class="btn btn-info btn-lg btn-block" onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button> ';
+			 content = content+'</div></div></div>';
+			 }
 		 } 
+		 content+'</div>'
 	 }
 	   //this will display for a care all his bookings
 	if(userType == "care" && myBookings == true){
 		$('.alert').html("Care Side : List of My Bookings");
+		content = '<div class="panel-group" id="accordion">';
 		 for(i = 0; i< bookings.length; i++){  
-			 if(bookings[i].targetId == userid)
-				 content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+
-				 '</td><td>'+bookings[i].targetId+'</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+
-				 '</td><td>'+bookings[i].timestamp+
-				 '</td><td> 5 Best Street , Dublin, Ireland  <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+'" > Navigate </a>  </td><td>'+bookings[i].message+
-				 '</td><td> <button onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button>  </td>';
-		 } 
+			 if(bookings[i].targetId == userid){
+				 content = content+'<div class="panel panel-primary"><div class="panel-heading"> <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel'+bookings[i].id+'"><i class="glyphicon glyphicon-plus"></i>';
+				 content = content+bookings[i].time+' -  '+bookings[i].status;
+				 content = content+'</a></h4></div>';
+				 content = content+'<div id="panel'+bookings[i].id+'" class="panel-collapse collapse"><div class="panel-body">';
+				 content = content+'booking ID: '+bookings[i].id+'<br> Message: '+bookings[i].message+'<br> Address : 5 Best Street , Dublin, Ireland <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+'" > Navigate to LOcation </a> <br> Action: <button type="button" class="btn btn-info btn-lg btn-block" onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button> ';
+				 content = content+'</div></div></div>';
+			 }
+		 }
+		 content+'</div>'
 	 }
 	    	
 	   //this will display for a care all available bookings
 	if(userType == "care"  && myBookings == false){
 		$('.alert').html("Care Side : List of Pending Bookings");
+		content = '<div class="panel-group" id="accordion">';
 		 for(i = 0; i< bookings.length; i++){ 
-			 if(bookings[i].status == "pending")
-				 content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+'</td><td>'+bookings[i].targetId+
-				 '</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+'</td><td>'+bookings[i].timestamp+
-				 '</td><td>Dublin, Ireland  </td><td>'+bookings[i].message+'</td><td> <button onclick="accept('+bookings[i].id+','+userid+');">Accept </button> </td>';
+			 if(bookings[i].status == "pending"){ 
+				 content = content+'<div class="panel panel-primary"><div class="panel-heading"> <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel'+bookings[i].id+'"><i class="glyphicon glyphicon-plus"></i>';
+				 content = content+bookings[i].time+' -  '+bookings[i].status;
+				 content = content+'</a></h4></div>';
+				 content = content+'<div id="panel'+bookings[i].id+'" class="panel-collapse collapse"><div class="panel-body">';
+				 content = content+'booking ID: '+bookings[i].id+'<br> Message: '+bookings[i].message+'<br>  Action: <button type="button" class="btn btn-info btn-lg btn-block" onclick="accept('+bookings[i].id+','+userid+');">Accept </button> ';
+				 content = content+'</div></div></div>'; 
+				 
+			 }
 		 } 
+		 content+'</div>'
 	 }
 	  
 	 
-	  $( ".result" ).html(content+'</tr></tbody></table>');
+	  $( ".result" ).html(content);
 });
 }
 
@@ -672,4 +721,11 @@ function goBack() {
  }
  
  drawTable();
+ 
+ var selectIds = $('#panel1,#panel2,#panel3');
+ $(function ($) {
+     selectIds.on('show.bs.collapse hidden.bs.collapse', function () {
+         $(this).prev().find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
+     })
+ });
 </script>
