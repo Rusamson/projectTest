@@ -1,0 +1,143 @@
+
+
+    
+     
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+	</script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+	</script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/ > 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 25px;
+    outline: none; 
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 25px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.quickbtn {
+    width: auto;
+    float: right; 
+    background-color: #f1f1f1;
+    color: #4CAF50;
+}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+ 
+  <div class="container">
+  <form action="medic/user/add"  method="POST">
+    <label for="firstname" class="text-info"><b>Firstname</b></label>
+    <input type="text"    name="firstname" >
+    <label for="surname" class="text-info"><b>Surname</b></label>
+    <input type="text"    name="surname" >
+    <label for="gender" class="text-info"><b>Gender</b></label>
+    <input type="text"  placeholder="M/F">
+    <label for="function" class="text-info"><b>Function</b></label>
+    <input type="text"  placeholder="Care/Client">
+    <label for="email" class="text-info"><b>Email</b></label>
+    <input type="text"   name="email" >
+
+    <label for="password"  class="text-info"><b>Password</b></label>
+    <input type="password"   name="password" required>
+        
+    <label for="password"  class="text-info"><b>Comfirm Password</b></label>
+    <input type="password"   name="password" required>
+ 
+    <label for="dbo" class="text-info"><b>Date of Birth</b></label>
+    <input id="datetimepicker" type="text"  placeholder="YYYY-MM-DD"  name="dbo">
+   use : Place Autocomplete Address Form
+   https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete
+    <label for="street" class="text-info"><b>Street</b></label>
+    <input type="text" name="street" >
+    
+    <label for="city" class="text-info"><b>City</b></label>
+    <input type="text" name="city" >
+    
+    <label for="country" class="text-info"><b>Country</b></label>
+    <input type="text"  name="country" >
+        
+    <button type="submit" >Save</button> 
+    </form>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1" > 
+    <span class="psw">Back <a href="mobile_login">Back</a></span><br> 
+  </div>
+ 
+
+</body>
+</html>
+
+<script> 
+
+jQuery('#datetimepicker').datetimepicker({
+     timepicker:false,
+     format:'d.m.Y',
+	 mask:true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
+	});
+</script>
