@@ -110,8 +110,12 @@ span.psw {
  
     <label for="dbo" class="text-info"><b>Date of Birth</b></label>
     <input id="datetimepicker" type="text"  placeholder="YYYY-MM-DD"  name="dbo">
+        <label for="contact" class="text-info"><b>Contact</b></label>
+    <input type="text"   name="contact" >
    use : Place Autocomplete Address Form
    https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete
+           <input id="pac-input" type="text"
+            placeholder="Enter a location">
     <label for="street" class="text-info"><b>Street</b></label>
     <input type="text" name="street" >
     
@@ -129,7 +133,12 @@ span.psw {
     <span class="psw">Back <a href="mobile_login">Back</a></span><br> 
   </div>
  
-
+    <div id="map"></div>
+    <div id="infowindow-content">
+      <img src="" width="16" height="16" id="place-icon">
+      <span id="place-name"  class="title"></span><br>
+      <span id="place-address"></span>
+    </div>
 </body>
 </html>
 
@@ -140,4 +149,13 @@ jQuery('#datetimepicker').datetimepicker({
      format:'d.m.Y',
 	 mask:true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
 	});
+	
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), { 
+    }); 
+    var input = document.getElementById('pac-input'); 
+
+    var autocomplete = new google.maps.places.Autocomplete(input);
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCs-5rItEDvTU4vsvlLzNtqNnUYXQnuLA&libraries=places&callback=initMap"
+        async defer></script>

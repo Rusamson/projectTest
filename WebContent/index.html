@@ -612,12 +612,12 @@ $.get( "http://localhost:8080/projectTest/booking?operation=all", function( data
 	if(userType == "system"){
 	$('.alert').html("List of All bookings from the system");
 	  content = '<table id="table-1" class="table table-hover"><thead><tr><th>ID</th><th>Source</th><th>Target</th><th>Time</th><th>Status </th>'+
-	'<th>Timestamp </th><th>Location</th><th>Message</th><th class="text-center" style="width: 30%;">Actions</th></tr></thead><tbody>';
+	'<th>Created at </th><th>Adress</th><th>GPS Location</th> <th>Contact</th> <th>Message</th><th>Actions</th></tr></thead><tbody>';
 	 for(i = 0; i< bookings.length; i++){ 
 		 content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+'</td><td>'+bookings[i].targetId+
 		 '</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+'</td><td>'+bookings[i].timestamp+
 		 '</td><td> 5 Best Street , Dublin, Ireland  <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+
-				 '" > Navigate </a> </td><td>'+bookings[i].message+'</td><td> - </td>';
+				 '" > Navigate </a> </td><td> 30.55524,50.585848</td><td> 0894785214 </td><td>'+bookings[i].message+'</td><td> - </td>';
 	 } 
 	 content+'</tr></tbody></table>'
 	}
@@ -648,7 +648,7 @@ $.get( "http://localhost:8080/projectTest/booking?operation=all", function( data
 				 content = content+bookings[i].time+' -  '+bookings[i].status;
 				 content = content+'</a></h4></div>';
 				 content = content+'<div id="panel'+bookings[i].id+'" class="panel-collapse collapse"><div class="panel-body">';
-				 content = content+'booking ID: '+bookings[i].id+'<br> Message: '+bookings[i].message+'<br> Address : 5 Best Street , Dublin, Ireland <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+'" > Navigate to LOcation </a> <br> Action: <button type="button" class="btn btn-info btn-lg btn-block" onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button> ';
+				 content = content+'booking ID: '+bookings[i].id+' <br> Name : Samson <br> Message: '+bookings[i].message+'<br> 	Contact: 0584586585 <br> Email: myemail@hotmail.com <br> Address : 5 Best Street , Dublin, Ireland <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+'" > Navigate to LOcation </a> <br> <br> <button type="button" class="btn btn-info btn-lg btn-block" onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button> ';
 				 content = content+'</div></div></div>';
 			 }
 		 }
@@ -665,7 +665,7 @@ $.get( "http://localhost:8080/projectTest/booking?operation=all", function( data
 				 content = content+bookings[i].time+' -  '+bookings[i].status;
 				 content = content+'</a></h4></div>';
 				 content = content+'<div id="panel'+bookings[i].id+'" class="panel-collapse collapse"><div class="panel-body">';
-				 content = content+'booking ID: '+bookings[i].id+'<br> Message: '+bookings[i].message+'<br>  Action: <button type="button" class="btn btn-info btn-lg btn-block" onclick="accept('+bookings[i].id+','+userid+');">Accept </button> ';
+				 content = content+'booking ID: '+bookings[i].id+'<br> City: Dublin <br> Country: Ireland <br> <br> <button type="button" class="btn btn-info btn-lg btn-block" onclick="accept('+bookings[i].id+','+userid+');">Accept </button> ';
 				 content = content+'</div></div></div>'; 
 				 
 			 }
