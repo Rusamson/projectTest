@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import samson.model.Booking; 
+import samson.model.Booking;
+import samson.model.User; 
 
 /**
  * Servlet implementation class BookingController
@@ -23,11 +24,11 @@ import samson.model.Booking;
 public class BookingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Map<String, Booking> bookingCache = new HashMap<String, Booking>();  
-	Booking b1 = new Booking("0","1","none","pending",true,"2019/01/24 12:12:00","53.34973157,-6.25808716"," premade 1");
-	Booking b2 = new Booking("1","3","1","accepted",true,"2019/01/24 12:12:00","53.34973157,-6.25808716"," premade 2");
-	Booking b3 = new Booking("2","2","3","cancelled",true,"2019/01/24 12:12:00","53.34973157,-6.25808716"," premade 3");
-	Booking b4 = new Booking("3","1","none","pending",false,"2019/01/24 12:12:00","53.34973157,-6.25808716"," premade 4");
-	Booking b5 = new Booking("4","2","none","pending",true,"NOW","53.34973157,-6.25808716","premade 5");
+	Booking b1 = new Booking("0","1","none","samson","pending",true,"2019/01/24 12:12:00","5 Best Street","Montral","Canada","53.34973157,-6.25808716"," premade 1");
+	Booking b2 = new Booking("1","3","1","samson","accepted",true,"2019/01/24 12:12:00","5 Best Street","Montral","Canada","53.34973157,-6.25808716"," premade 2");
+	Booking b3 = new Booking("2","2","3","samson","cancelled",true,"2019/01/24 12:12:00","5 Best Street","Montral","Canada","53.34973157,-6.25808716"," premade 3");
+	Booking b4 = new Booking("3","1","none","samson","pending",false,"2019/01/24 12:12:00","5 Best Street","Montral","Canada","53.34973157,-6.25808716"," premade 4");
+	Booking b5 = new Booking("4","2","none","samson","pending",true,"NOW","5 Best Street","Montral","Canada","53.34973157,-6.25808716","premade 5");
 	
 	
 	
@@ -52,14 +53,18 @@ public class BookingController extends HttpServlet {
 		ServletOutputStream out = response.getOutputStream();
 		
 		   if(request.getParameter("operation").equals("add")) {
-			   
+			   User u = new User("0","samson","rukundo","0894892552","samson@hotmail.com","samson","23-11-1990","M","Client","5 best street , Nangor Road","Dublin","Ireland","53.15488,35.25878995");
 			   Booking booking = new Booking();
 			   booking.setSourceId(request.getParameter("sourceId"));
 			   booking.setTargetId(request.getParameter("targetId"));
+			   booking.setName(u.getFirstname());
 			   booking.setTime(request.getParameter("time")); 
 			   booking.setVisibility(true);
 			   booking.setStatus(request.getParameter("status"));
-			   booking.setLocation(request.getParameter("location")); 
+			   booking.setStreet(u.getStreet());
+			   booking.setCity(u.getCity());
+			   booking.setCountry(u.getCountry());
+			   booking.setLocation(u.getCoordinates()); 
 			   booking.setMessage(request.getParameter("message")); 
 			   
 			   if(bookingCache.get(request.getParameter("id")) != null ) {  
