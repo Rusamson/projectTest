@@ -25,26 +25,26 @@ public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private static Map<String, User> userCache = new HashMap<String, User>();  
-	   User u1 = new User("1","dolly","kamaliza","514 222 3500"," dolly1@hotmail.com ","dolly","15-04-1970","F","care"," rue Des Saules ","Mirabel","Canada","");
-	   User u2 = new User("2"," angelos "," muhire ","514 444 3520"," angelos1hotmail.com "," angelos ","15-04-1990","F","care"," rue De Lublin "," Laval ","Canada","");
-	   User u3 = new User("3"," jeannino "," Simone ","514 230 1500"," jeannino1@hotmail.com "," jeannino ","20-03-1985","F","care"," Lachapelle "," Montreal ","Canada","");
-	   User u4 = new User("4"," gennet "," brown ","514 240 1700"," gennet1@hotmail.com "," gennet ","13-04-1989","F","care"," Saint Paul "," Chateauguay ","Canada","");
-	   User u5 = new User("5"," fidman"," brown ","514 140 1717"," fidman1@hotmail.com "," fidman ","15-04-1970","M","care"," Saint Paul "," Chateauguay ","Canada","");
-	   User u6 = new User("6"," monica "," terry ","514 220 8000"," monica1@hotmail.com "," monica ","04-03-1982","F","care"," Dollar "," Montréal ","Canada","");
-	   User u7 = new User("7"," olliy "," luke ","514 111 5400"," olliy1@hotmail.com "," olliy ","13-04-1969","F","care"," Aylwin "," Montréal ","Canada","");
-	   User u8 = new User("8"," ireno "," dawson ","514 230 6677"," ireno1@hotmail.com "," ireno ","11-11-1990","F","care"," Hebert "," Montréal ","Canada","");
-	   User u9 = new User("9"," florento "," dawson ","514 240 0055"," florento1@hotmail.com "," florento ","20-11-1979","F","care"," Veilliette "," Montréal ","Canada","");
-	   User u10 = new User("10"," rachero "," kim ","514 720 0088"," rachero1@hotmail.com "," rachero ","04-03-1982","F","care"," 42e avenue "," Montréal ","Canada","");
-	   User u11 = new User("11"," nadjery "," mimi ","514 660 0125"," nadjery1@hotmail.com "," nadjery ","13-04-1969","F","care"," Nellygan "," Montréal ","Canada","");
-	   User u12 = new User("12"," beatty "," amani ","514 330 0238"," beatty1@hotmail.com "," beatty ","11-11-1990","F","care"," Tecumseh "," Montréal ","Canada","");
-	   User u13 = new User("13"," nelito "," kerry ","514 526 0256"," nelito1@hotmail.com "," nelito ","17-11-1998","F","care"," Terrasse Turcotte  "," Montréal ","Canada","");
-	   User u14 = new User("14"," rozzy "," thomson ","857 240 1122"," rozzy1@hotmail.com "," rozzy ","13-12-2000","F","care"," massachusetts  street"," Boston ","USA","");
-	   User u15 = new User("15"," dodieu "," mboka ","514 120 6347"," dodieu1hotmail.com "," dodieu ","10-12-1999","M","care"," Central "," Montreal", "Canada","");
+	   User u1 = new User("1","dolly","kamaliza","514 222 3500","dolly1@hotmail.com","dolly","15-04-1970","F","care"," rue Des Saules ","Mirabel","Canada","");
+	   User u2 = new User("2","angelos ","muhire ","514 444 3520","angelos1hotmail.com","angelos ","15-04-1990","F","care"," rue De Lublin "," Laval ","Canada","");
+	   User u3 = new User("3","jeannino ","Simone ","514 230 1500","jeannino1@hotmail.com","jeannino ","20-03-1985","F","care"," Lachapelle "," Montreal ","Canada","");
+	   User u4 = new User("4","gennet ","brown ","514 240 1700","gennet1@hotmail.com ","gennet ","13-04-1989","F","care"," Saint Paul "," Chateauguay ","Canada","");
+	   User u5 = new User("5","fidman","brown ","514 140 1717","fidman1@hotmail.com","fidman","15-04-1970","M","care"," Saint Paul "," Chateauguay ","Canada","");
+	   User u6 = new User("6","monica ","terry ","514 220 8000","monica1@hotmail.com","monica ","04-03-1982","F","care"," Dollar "," Montréal ","Canada","");
+	   User u7 = new User("7","olliy ","luke ","514 111 5400","olliy1@hotmail.com","olliy","13-04-1969","F","care"," Aylwin "," Montréal ","Canada","");
+	   User u8 = new User("8","ireno ","dawson ","514 230 6677","ireno1@hotmail.com","ireno","11-11-1990","F","care"," Hebert "," Montréal ","Canada","");
+	   User u9 = new User("9","florento ","dawson ","514 240 0055","florento1@hotmail.com","florento","20-11-1979","F","care"," Veilliette "," Montréal ","Canada","");
+	   User u10 = new User("10","rachero ","kim ","514 720 0088","rachero1@hotmail.com","rachero","04-03-1982","F","care"," 42e avenue "," Montréal ","Canada","");
+	   User u11 = new User("11","nadjery ","mimi ","514 660 0125","nadjery1@hotmail.com","nadjery ","13-04-1969","F","care"," Nellygan "," Montréal ","Canada","");
+	   User u12 = new User("12","beatty ","amani ","514 330 0238","beatty1@hotmail.com","beatty","11-11-1990","F","care"," Tecumseh "," Montréal ","Canada","");
+	   User u13 = new User("13","nelito ","kerry ","514 526 0256","nelito1@hotmail.com","nelito","17-11-1998","F","care"," Terrasse Turcotte  "," Montréal ","Canada","");
+	   User u14 = new User("14","rozzy ","thomson ","857 240 1122","rozzy1@hotmail.com","rozzy","13-12-2000","F","care"," massachusetts  street"," Boston ","USA","");
+	   User u15 = new User("15","dodieu ","mboka ","514 120 6347","dodieu1hotmail.com","dodieu","10-12-1999","M","care"," Central "," Montreal", "Canada","");
 /*	   
 
-"1","dolly","kamaliza","514 222 3500"," dolly1@hotmail.com ","dolly","15-04-1970","F","care"," rue Des Saules ","Mirabel","Canada",""
-"2"," angelos "," muhire ","514 444 3520"," angelos1hotmail.com "," angelos ","15-04-1990","F","care"," rue De Lublin "," Laval ","Canada",""
-"3"," jeannino "," Simone ","514 230 1500"," jeannino1@hotmail.com "," jeannino ","20-03-1985","F","care"," Lachapelle "," Montreal ","Canada",""
+"1","dolly","kamaliza","514 222 3500","dolly1@hotmail.com ","dolly","15-04-1970","F","care"," rue Des Saules ","Mirabel","Canada",""
+"2"," angelos "," muhire ","514 444 3520","angelos1hotmail.com "," angelos ","15-04-1990","F","care"," rue De Lublin "," Laval ","Canada",""
+"3"," jeannino "," Simone ","514 230 1500","jeannino1@hotmail.com "," jeannino ","20-03-1985","F","care"," Lachapelle "," Montreal ","Canada",""
 "4"," gennet "," brown ","514 240 1700"," gennet1@hotmail.com "," gennet ","13-04-1989","F","care"," Saint Paul "," Chateauguay ","Canada",""
 "5"," fidman"," brown ","514 140 1717"," fidman1@hotmail.com "," fidman ","15-04-1970","M","care"," Saint Paul "," Chateauguay ","Canada",""
 "6"," monica "," terry ","514 220 8000"," monica1@hotmail.com "," monica ","04-03-1982","F","care"," Dollar "," Montréal ","Canada",""
@@ -102,6 +102,27 @@ public class UserController extends HttpServlet {
 					}
 			        out.flush();
 			   }
+		   if(request.getParameter("operation").equals("login")) {
+			   
+			   User u = userCache.get(request.getParameter("id"));
+			   
+			   if(u!= null && u.getPassword().equals(request.getParameter("password"))) {
+				   
+					GsonBuilder gsonMapBuilder = new GsonBuilder();
+					Gson gsonObject = gsonMapBuilder.create();
+					String JSONObject = gsonObject.toJson(userCache.get(request.getParameter("id")));
+					if(!JSONObject.equals("null")) {
+			        out.print(JSONObject);
+			        
+					}  
+			   }else {
+					 out.print("Login Failed ! User doesn't exisit");	
+				}
+
+			        out.flush();
+			   }
+		   
+		   
 		   
 	}
 
