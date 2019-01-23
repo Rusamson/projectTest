@@ -11,6 +11,17 @@ import java.util.Date;
  * @author Samson
  *
  */
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date; 
+/**
+ * Entity bean with JPA annotations
+ * Hibernate provides JPA implementation
+ * @author Samson
+ *
+ */
  
 public class User {
 	private String id;
@@ -27,6 +38,8 @@ public class User {
 	private String country;
 	private String coordinates;	
 	private String joined;
+	
+	public User() {}
 	public User(String id, String firstname, String surname, String phone, String email, String password, String dob,
 			String gender, String type, String street, String city, String country, String coordinates) {
 		//super();

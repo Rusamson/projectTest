@@ -1,0 +1,731 @@
+
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+	</script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+	</script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/ > 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+/*new list css */
+      #accordion .glyphicon { margin-right:10px; }
+      .panel-collapse>.list-group .list-group-item:first-child {border-top-right-radius: 0;border-top-left-radius: 0;}
+      .panel-collapse>.list-group .list-group-item {border-width: 1px 0;}
+      .panel-collapse>.list-group {margin-bottom: 0;}
+      .panel-collapse .list-group-item {border-radius:0;}
+
+      .panel-collapse .list-group .list-group {margin: 0;margin-top: 10px;}
+      .panel-collapse .list-group-item li.list-group-item {margin: 0 -15px;border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item:last-child {padding-bottom: 0;}
+
+      .panel-collapse div.list-group div.list-group{margin: 0;}
+      .panel-collapse div.list-group .list-group a.list-group-item {border-top: 1px solid #ddd !important;border-bottom: 0;padding-left: 30px;}
+      .panel-collapse .list-group-item li.list-group-item {border-top: 1px solid #DDD !important;}
+</style>
+</head>
+<body>
+ <br>
+ 
+ <button type="button" class="quickbtn" onclick="order('1','none','pending','NOW','53.34973157,-6.25808716','optional message');">Order Now !</button>
+ <input id="datetimepicker" type="text" >
+  Care Number (OPtional , if empty means all, or you can add numbers with commas 5,6,20,12):
+ <input id="care" type="text" >
+ Message (Optional):
+ <input id="message" type="text" >
+  <button type="button" class="quickbtn" onclick="book('1','none','pending','53.34973157,-6.25808716');">Book in the Future</button>
+				<div class="col-lg-12">
+				<a href="mobile_profile_owner/">
+				<div style="text-align:center">
+				 <img class="img-circle" height="40px" src="resources/img/"> 
+				 <br> Welcome <b> !</div>
+				</a>
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<i class="fa fa-list fa-fw"></i> Bookings
+						</div>
+						<div class="panel panel-green" style="background:#FFF;"> 
+						 <div class="alert alert-warning" > 
+				         </div>  
+				         <div class="result table-responsive-lg">  
+				         </div>
+							 
+						</div>
+						<button type="button" class="cancelbtn " onclick="goBack()"> Back</button> 
+					</div> 
+				</div>
+######################################################## LISTS STARTS
+
+
+<div class="container">
+    <div class="row">
+        <h1 class="page-header"><div class="crush">Category 1</div></h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+        
+            <div class="table-responsive">
+            
+                <table class="table table-sm table-hover">
+                  <thead class="thead-default">
+                  
+                    <tr class="add-category-row">
+                      <th style="width: 30px;">
+                        <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                            <span class="glyphicon glyphicon-plus green" aria-hidden="true"></span>
+                        </button> 
+                      </th>
+                      
+                      
+                      <th colspan="2">Add Checklist</th>
+                      
+                      <th style="width: 70px;"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                  
+                   <tr class="category-row">
+                      <th style="width: 30px;">
+                        <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                            <span class="glyphicon glyphicon-plus green" aria-hidden="true"></span>
+                        </button> 
+                      </th>
+                      
+                      <th style="width: 30px;">
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button> 
+                        </th>
+                      
+                      <th style="text-align: center;">Checklist1: MAKE SURE EVERYONE IS CLEAR FROM MOVING PARTS AND PROCEED WITH THE FOLLOWING:</th>
+                      
+                      <th style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button> 
+                      </th>
+                    </tr>
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Put all controls in neutral position.</td>
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Start drill.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">After warming up drill to a normal operating temperature proceed to check oil pressure and battery voltage.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list green-bg" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+               
+ 
+<!-- Questions Section -->
+
+                    <tr class="success">
+                        <td colspan="4">
+                             <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Question
+                            </button>     
+                        </td>
+                    </tr>
+
+                    <tr class="warning">
+                        <td colspan="3">
+                            <div class="row q_row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-9">
+                                    <span>Do you really need to do this?</span>
+                                </div>
+                               <!--  
+                                <div class="col-lg-2">
+                                    <div class="btn-group pull-right" role="group" aria-label="...">
+                                      <button type="button" class="btn btn-danger btn-xs">Good</button>
+                                      <button type="button" class="btn btn-default  btn-xs">UA</button>
+                                    </div>
+                                </div>
+                                -->
+                                
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                    <tr class="warning">
+                        <td colspan="3">
+                            <div class="row q_row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-9">
+                                    <span>Do you really need to do this?</span>
+                                </div>
+                                <!--
+                                <div class="col-lg-2">
+                                    <div class="btn-group pull-right" role="group" aria-label="...">
+                                      <button type="button" class="btn btn-default btn-xs">Good</button>
+                                      <button type="button" class="btn btn-danger btn-xs">UA</button>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </td>
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                    
+<!-- end question section -->
+               
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Visually inspect equipment for obvious oil leaks.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>
+                 
+                   <tr class="category-row">
+                      <th style="width: 30px;">
+                        <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                            <span class="glyphicon glyphicon-plus green" aria-hidden="true"></span>
+                        </button> 
+                      </th>
+                      
+                      <th style="width: 30px;">
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button> 
+                        </th>
+                      
+                      <th style="text-align: center;">Checklist 2: SHUTDOWN PROCEDURE (IN EVENT OF VISIBLE OIL LEAKS)</th>
+                      
+                      <th style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button> 
+                      </th>
+                    </tr>
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Immediately turn off drill if a major leak is present and follow the Emergency
+
+Spill Response Plan.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr> 
+
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">In the event of a small oil leak, allow motor to cool for 5 minutes before turning
+
+off.</td>
+
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button>  
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>                  
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">De­energize drilling equipment prior to repairs.</td>
+
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>                  
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Follow proper lockout/tagout procedures to ensure equipment is safe for repair
+
+(refer to WI­59 Safety – Lock Out, Tag Out; Surface).</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>                    
+                  
+                    <tr>
+                        <td>
+                            <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>    
+                        </td>
+
+                        <td colspan="2">Report any defects on the machine to your supervisor and include in this
+
+report.</td>
+                        
+                        <td style="text-align: right;">
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            </button> 
+                            <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>     
+                        </td>
+                    </tr>                  
+                  
+                </tbody>
+                </table>
+    
+            </div>
+        </div>
+    </div>    
+        
+    
+</div>
+
+################################################################## an other list 
+
+<div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
+                    </span>Content</a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <ul class="list-group">
+                  <li class="list-group-item"><span class="glyphicon glyphicon-pencil text-primary"></span><a href="http://fb.com/moinakbarali">Articles</a>
+                    <ul class="list-group">
+                      <li class="list-group-item"><span class="glyphicon glyphicon-pencil text-primary"></span><a href="http://fb.com/moinakbarali">Articles</a></li>
+
+                      <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="http://fb.com/moinakbarali">News</a></li>
+
+                      <li class="list-group-item"><span class="glyphicon glyphicon-file text-info"></span><a href="http://fb.com/moinakbarali">Newsletters</a></li>
+
+                      <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="http://fb.com/moinakbarali">Comments</a><span class="badge">42</span></li>
+
+                    </ul>
+                  </li>
+
+                  <li class="list-group-item"><span class="glyphicon glyphicon-flash text-success"></span><a href="http://fb.com/moinakbarali">News</a></li>
+
+                  <li class="list-group-item"><span class="glyphicon glyphicon-file text-info"></span><a href="http://fb.com/moinakbarali">Newsletters</a></li>
+
+                  <li class="list-group-item"> <span class="glyphicon glyphicon-comment text-success"></span><a href="http://fb.com/moinakbarali">Comments</a><span class="badge">42</span></li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                    </span>Reports</a>
+                </h4>
+              </div>
+              <div id="collapseFour" class="panel-collapse collapse">
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    Cras justo odio
+                  </a>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item">
+                      Cras justo odio
+                    </a>
+                    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item">Morbi leo risus</a>
+                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+                  </div>
+                  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item">Morbi leo risus</a>
+                  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item">Vestibulum at eros</a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-heart">
+                    </span>Reports</a>
+                </h4>
+              </div>
+              <div id="collapseFive" class="panel-collapse collapse">
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  </a>
+                </div>
+                <div class="list-group">
+                  <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  </a>
+                </div>
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9 col-md-9">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dashboard</h3>
+            </div>
+            <div class="panel-body">
+              <p>Admin Dashboard Accordion List Group Menu</p>
+              <div class="alert alert-success"><h3>Yes! It's compatible with BS 3.0.3, 3.1 & 3.2 </h3></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    #########################################
+    <div class="panel-group" id="accordion">
+    <div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel1"><i class="glyphicon glyphicon-minus"></i>
+    Panel 1
+    </a></h4></div><div id="panel1" class="panel-collapse collapse in"><div class="panel-body">
+    Contents panel 1
+    </div></div></div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel2"><i class="glyphicon glyphicon-plus"></i>Panel 2</a>
+            </h4>
+
+        </div>
+        <div id="panel2" class="panel-collapse collapse">
+            <div class="panel-body">Contents panel 2</div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel3"><i class="glyphicon glyphicon-plus"></i>Panel 3</a>
+            </h4>
+
+        </div>
+        <div id="panel3" class="panel-collapse collapse">
+            <div class="panel-body">Contents panel 3</div>
+        </div>
+    </div>
+</div>
+    
+</body>
+</html>
+<script> 
+
+jQuery('#datetimepicker').datetimepicker({
+	// timepicker:false,
+	 mask:true, // '9999/19/39 29:59' - digit is the maximum possible for a cell
+	});
+	
+//var userid =   '${sessionScope.sessionUser.id}' ;
+//var userType = '${sessionScope.sessionUser.type}';
+
+var userid =   "1";
+var userType = "care";
+var myBookings = true;
+var content =  "";
+//var mylocation = 'https://www.google.com/maps/search/?api=1&query=28.6139,77.2090';
+
+function drawTable(){
+
+$.get( "http://localhost:8080/projectTest/booking?operation=all", function( data ) { 
+	//alert(data['0'].sourceId);
+	var bookings = data;  
+	
+	if(userType == "system"){
+	$('.alert').html("List of All bookings from the system");
+	  content = '<table id="table-1" class="table table-hover"><thead><tr><th>ID</th><th>Source</th><th>Target</th><th>Time</th><th>Status </th>'+
+	'<th>Created at </th><th>Adress</th><th>GPS Location</th> <th>Contact</th> <th>Message</th><th>Actions</th></tr></thead><tbody>';
+	 for(i = 0; i< bookings.length; i++){ 
+		 content = content+'<tr class="odd gradeX"> <td>'+bookings[i].id+'</td><td>'+bookings[i].sourceId+'</td><td>'+bookings[i].targetId+
+		 '</td><td>'+bookings[i].time+'</td><td>'+bookings[i].status+'</td><td>'+bookings[i].timestamp+
+		 '</td><td> 5 Best Street , Dublin, Ireland  <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+
+				 '" > Navigate </a> </td><td> 30.55524,50.585848</td><td> 0894785214 </td><td>'+bookings[i].message+'</td><td> - </td>';
+	 } 
+	 content+'</tr></tbody></table>'
+	}
+	
+   //this will display for a client
+	if(userType == "client"){
+		$('.alert').html("Client Side : List of My Bookings");
+		  content = '<div class="panel-group" id="accordion">';
+		 for(i = 0; i< bookings.length; i++){ 
+			 if(bookings[i].sourceId == userid){ 
+			 content = content+'<div class="panel panel-primary"><div class="panel-heading"> <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel'+bookings[i].id+'"><i class="glyphicon glyphicon-plus"></i>';
+			 content = content+bookings[i].time+' -  '+bookings[i].status;
+			 content = content+'</a></h4></div>';
+			 content = content+'<div id="panel'+bookings[i].id+'" class="panel-collapse collapse"><div class="panel-body">';
+			 content = content+'booking ID: '+bookings[i].id+'<br> Message: '+bookings[i].message+'<br> Address : 5 Best Street , Dublin, Ireland <br> Action: <button type="button" class="btn btn-info btn-lg btn-block" onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button> ';
+			 content = content+'</div></div></div>';
+			 }
+		 } 
+		 content+'</div>'
+	 }
+	   //this will display for a care all his bookings
+	if(userType == "care" && myBookings == true){
+		$('.alert').html("Care Side : List of My Bookings");
+		content = '<div class="panel-group" id="accordion">';
+		 for(i = 0; i< bookings.length; i++){  
+			 if(bookings[i].targetId == userid){
+				 content = content+'<div class="panel panel-primary"><div class="panel-heading"> <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel'+bookings[i].id+'"><i class="glyphicon glyphicon-plus"></i>';
+				 content = content+bookings[i].time+' -  '+bookings[i].status;
+				 content = content+'</a></h4></div>';
+				 content = content+'<div id="panel'+bookings[i].id+'" class="panel-collapse collapse"><div class="panel-body">';
+				 content = content+'booking ID: '+bookings[i].id+' <br> Name : Samson <br> Message: '+bookings[i].message+'<br> 	Contact: 0584586585 <br> Email: myemail@hotmail.com <br> Address : 5 Best Street , Dublin, Ireland <br> <a href="https://www.google.com/maps/search/?api=1&query='+bookings[i].location+'" > Navigate to LOcation </a> <br> <br> <button type="button" class="btn btn-info btn-lg btn-block" onclick="cancel('+bookings[i].id+',\''+userType+'\');">Cancel </button> ';
+				 content = content+'</div></div></div>';
+			 }
+		 }
+		 content+'</div>'
+	 }
+	    	
+	   //this will display for a care all available bookings
+	if(userType == "care"  && myBookings == false){
+		$('.alert').html("Care Side : List of Pending Bookings");
+		content = '<div class="panel-group" id="accordion">';
+		 for(i = 0; i< bookings.length; i++){ 
+			 if(bookings[i].status == "pending"){ 
+				 content = content+'<div class="panel panel-primary"><div class="panel-heading"> <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#panel'+bookings[i].id+'"><i class="glyphicon glyphicon-plus"></i>';
+				 content = content+bookings[i].time+' -  '+bookings[i].status;
+				 content = content+'</a></h4></div>';
+				 content = content+'<div id="panel'+bookings[i].id+'" class="panel-collapse collapse"><div class="panel-body">';
+				 content = content+'booking ID: '+bookings[i].id+'<br> City: Dublin <br> Country: Ireland <br> <br> <button type="button" class="btn btn-info btn-lg btn-block" onclick="accept('+bookings[i].id+','+userid+');">Accept </button> ';
+				 content = content+'</div></div></div>'; 
+				 
+			 }
+		 } 
+		 content+'</div>'
+	 }
+	  
+	 
+	  $( ".result" ).html(content);
+});
+}
+
+
+function goBack() {
+    window.history.back();
+}
+
+ function order(sourceId, targetId, status, time, location, message){ 
+ var parameters = "operation=add&sourceId="+sourceId+"&targetId="+targetId+"&status="+status+"&time="+time+"&location="+location+"&message="+message; 
+	 alert(name+" , You are about to Oreder a Care Professional.  Please Confirm");
+	    $.get("http://localhost:8080/projectTest/booking?"+parameters, function(data, status){
+	         alert(data); 
+	    });
+	    $("#msg").text("A Professional Care is on the way");
+ } 
+ 
+ function book(sourceId, targetId, status, location){ 
+	// alert($('#datetimepicker').val());
+	 var parameters = "operation=add&sourceId="+sourceId+"&targetId="+targetId+"&status="+status+"&time="+$('#datetimepicker').val()+"&location="+location+"&message="+$('#message').val(); 
+		 alert(name+" , You are about to Oreder a Care Professional.  Please Confirm"); 
+		    $.get("http://localhost:8080/projectTest/booking?"+parameters, function(data, status){
+		         
+		    });
+		    $("#msg").text("A Professional Care is on the way");
+	    drawTable();
+	 } 
+ function accept(bookingId, careId){
+	 var parameters ="operation=accept&bookingId="+bookingId+"&careId="+careId;
+	    $.get("http://localhost:8080/projectTest/booking?"+parameters, function(data, status){
+	           
+	    });
+	    drawTable();
+ }
+ 
+ function cancel(bookingId, userType){
+	
+	 var parameters ="operation=cancel&bookingId="+bookingId+"&userType="+userType;
+	// alert(parameters);
+	    $.get("http://localhost:8080/projectTest/booking?"+parameters, function(data, status){
+	           
+	    });
+	    drawTable();
+ }
+ 
+ drawTable();
+ 
+ var selectIds = $('#panel1,#panel2,#panel3');
+ $(function ($) {
+     selectIds.on('show.bs.collapse hidden.bs.collapse', function () {
+         $(this).prev().find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
+     })
+ });
+</script>
