@@ -1,0 +1,358 @@
+
+
+ 
+    
+     
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+ 
+  <!--  
+  <link href="/trakcos/resources/css/main.css" rel="stylesheet"> 
+  <script src="/trakcos/resources/js/main.js"></script>
+  OR 
+  <link href="/trakcos/resources/theme1/css/main.css" rel="stylesheet" >
+  -->
+  <!--  
+  	 
+	
+
+	<link href="/trakcos/resources/theme1/css/main.css" rel="stylesheet" /> 
+    <script src="/trakcos/resources/theme1/js/main.js"></script>
+    -->
+     <!--  
+    <link href="/trakcos/resources/theme1/css/sidebar.css" rel="stylesheet" > 
+    <link href="/trakcos/resources/theme1/css/.css" rel="stylesheet" >   
+     <link href="/trakcos/resources/theme1/css/topbar.css" rel="stylesheet" >
+     -->
+     
+      <link href="/trakcos/resources/css/sidebar.css" rel="stylesheet"> 
+      <link href="/trakcos/resources/css/page.css" rel="stylesheet">
+      <link href="/trakcos/resources/css/topbar.css" rel="stylesheet">
+      
+     <script language="JavaScript" type="text/javascript"  src="http://maps.google.com/maps/api/js?key=AIzaSyDCs-5rItEDvTU4vsvlLzNtqNnUYXQnuLA" 
+          type="text/javascript"></script>   
+<title>Trackos</title>
+</head>
+<body> 
+		 
+  		  
+		
+ 
+ <div id="wrapper">
+ 
+         <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                 <a href="dashboard" style="background-color:#24c17d; color:#fff;"> 
+                       <i class="fa fa-dashboard"></i> Overview
+                    </a>
+                </li>
+                <li data-toggle="collapse" data-target="#collapse0" aria-expanded="false" aria-controls="collapse4">
+                   <a href="#"><i class="fa fa-plus"></i> Add User</a>
+                </li>
+                <li class="collapse sub" id="collapse0">
+                  <a href="register_care_provider"> Care Provider</a> 
+                  <a href="register_patient"> Patient</a> 
+                   <a href="register_user"> System User</a>                   
+                </li>  
+                 <li  data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="collapse1" style="background-color:#004e75;">
+   				   
+   				    
+   				    <a  href="dashboard"><img src="resources/img/h3.jpg" height="30px"  class="img-circle"/> Mary <img src="resources/img/state1.png" height="15px"/></a> 		
+     				<a  href="dashboard"><img src="resources/img/h4.jpg" height="30px"  class="img-circle"/> Patricia <img src="resources/img/state2.png" height="15px" /></a> 
+   				    <a  href="dashboard"><img src="resources/img/h1.jpg"  height="30px"  class="img-circle"/> James <img src="resources/img/state1.png" height="15px"/></a> 
+   				    <a  href="dashboard"><img src="resources/img/h2.jpg"  height="30px"  class="img-circle"/> John <img src="resources/img/state1.png" height="15px"/></a> 
+     				<a  href="dashboard"><img src="resources/img/h5.jpg" height="30px"  class="img-circle"/> Robert <img src="resources/img/state3.png" height="20px"/></a> 		
+     				<a  href="dashboard" > Shaw All <span class="fa fa-list"> </span></a> 			   				
+                </li>
+                                  
+                <li data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                   <a href="#"><i class="fa fa-tasks"></i> Users</a>
+                </li>
+                <li class="collapse sub" id="collapse1">
+                  <a href="view_list_care_provider">Care Providers</a> 
+                   <a href="view_list_patient">Patients</a>  
+                  <a href="view_list_patient_care_provider">All</a>  
+                </li>                              
+            <li data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                   <a href="#"><i class="fa fa-line-chart"></i> Analytics</a>
+                </li>
+                <li class="collapse sub" id="collapse2">
+                  <a href="#">Best Coverage</a> 
+                  <a href="#">Best Routes</a> 
+                  <a href="#">Efficiency</a>
+                   <a href="#">Edit / Delete</a>
+                </li>     
+                <li>
+                    <a href="#"><i class="fa fa-database"></i> History</a>
+                </li>
+                 <li data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                   <a href="#"><i class="fa fa-envelope"></i> Messages</a>
+                </li>
+                <li class="collapse sub" id="collapse4">
+                  <a href="inbox"> Inbox</a> 
+                  <a href="outbox"> Outbox</a> 
+                   <a href="compose"> Compose</a>                   
+                </li>   
+                <li data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                   <a href="#"><i class="fa fa-bell"></i> Alerts</a>
+                </li>
+                <li class="collapse sub" id="collapse5">
+                
+                  <a href=" ">Boundaries</a>  
+                  <a href=" ">Messages</a>  
+                   <a href=" ">Notifications</a>  
+                               
+                </li>
+                <li data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                   <a href="#"><i class="fa fa-users"></i> Admin </a>
+                </li>
+                <li class="collapse sub" id="collapse6">
+                <a href="register_user" >Register User</a>  
+                  <a href="register_tracker">Register Tracker</a> 
+                  <a href="register_truck">Register Tuck</a>  
+                              
+                </li>
+                 <li data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                   <a href="#"><i class="fa fa-eye-slash"></i> View </a>
+                </li>
+                <li class="collapse sub" id="collapse7">
+                <a href="view_user" > User</a>  
+                  <a href="view_tracker"> Tracker</a> 
+                  <a href="view_truck"> Tuck</a>       
+                </li>
+       <!--            <li>
+                    <a href="virtual"><i class="fa fa-compass"></i> Virtual</a>
+                </li>  -->
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+  
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+      <div class="container" style=" width:100%;">
+        <div class="navbar-header"  class="pull-left" >
+         <a  href="#"><img src="resources/img/logo3.png"  width="100px" height="60px" /> TRACKOS MEDICAL </a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button> 
+         
+        </div> 
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-tasks fa-fw text-info"></i>  
+              <i class="fa fa-caret-down text-info"></i>
+              </a>
+              <ul class="dropdown-menu">
+               <li><a href="tasks_add">add Task</a></li>
+               <li><a href="view_task">view Task</a></li> 
+              </ul>
+            </li>
+
+               <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa  fa-envelope fa-fw text-info"></i>  
+              <i class="fa fa-caret-down text-info"></i>
+              </a>
+              <ul class="dropdown-menu">
+
+                <li><a href="inbox">Inbox</a></li>
+                <li><a href="outbox">Out Box</a></li> 
+                <li role="separator" class="divider"></li> 
+                <li><a href="compose">Compose</a></li>  
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-bell fa-fw text-info"></i>  
+              <i class="fa fa-caret-down text-info"></i>
+              </a>
+              <ul class="dropdown-menu">
+<li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> Notification
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 Bounderies
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user fa-fw text-info"></i>  
+              <i class="fa fa-caret-down text-info"></i>
+              </a>
+              <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+              </ul>
+            </li>
+                        
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+          
+  
+  
+  
+  
+  
+  #################################################
+   
+			<div class="row">
+				<div class="col-lg-12">  
+				<div id="mapdiv"></div>
+				<div id="map" style="width:100%;height:100%;"></div>
+				
+				</div>
+			</div><!-- END OF THE ROW -->
+
+	<script type="text/javascript">
+	    
+	    var myLatlng = new google.maps.LatLng(45.47842910891348,-73.64135742187501);
+	    var mapOptions = {
+	      zoom: 10,
+	      center: myLatlng
+	    }
+	    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+	    var markers = [];
+ 
+	    function setMultipleMarker(lon, lat, info){ 
+	        var myLatlng2 = new google.maps.LatLng(lon, lat);  
+		     var marker= new google.maps.Marker({ 
+			         title:info,
+			        /* label: {
+			        	
+			        	    text: info,
+			        	    color: 'yellow'
+			        	  },*/
+			        // icon: 'http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_yellow.png'
+			     });
+		    
+		     marker.setPosition(myLatlng2);
+		     markers.push(marker);
+	     
+		     for (var i = 0; i < markers.length; i++) {
+		          markers[i].setMap(map);
+		        } 
+	    }
+	    
+	
+	      function deleteMarkers() {
+	    	for (var i = 0; i < markers.length; i++) {
+	    	   markers[i].setMap(null);
+	    	       }
+	           markers = [];
+	      }
+	      
+	    function drawMarkerByPhone(phone){  
+	    	$.get("g/locationHistory/"+phone, function(data, status){  
+	    		var locations  =  jQuery.parseJSON(data); 
+	    		//setMultipleMarker(locations[0].lat,locations[0].log);
+	    		for (i = 0; i < locations.length; i++) {  
+	    			 setMultipleMarker(locations[i].lat,locations[i].log,locations[i].time);
+	    		 }
+	    	 });
+	    }
+	    function drawCurrentLocations(){  
+	    	//clear and delete previous markers if any
+	    	deleteMarkers();
+	    	$.get("g/currentLocations", function(data, status){  
+	    		var locations  =  jQuery.parseJSON(data); 
+	    		 for (i = 0; i < locations.length; i++) {  
+	    			 setMultipleMarker(locations[i].lat,locations[i].log,locations[i].time);
+	    		 }
+	    		 locations = null;
+	    	 });
+	    	 
+	    }	   
+	    function drawAllCoordinates(){  
+	    	//$.get("g/allCoordinates", function(data, status){  
+	    		$.get( "http://localhost:8080/projectTest/booking?operation=all", function( data, status ) { 
+	    		//var locations  =  jQuery.parseJSON(data); 
+	    		
+	    		for(var booking in data) {  
+	    			 var cords = data[booking]['location'].split(",");   
+	    			 setMultipleMarker(cords[0],cords[1], data[booking]['name']);
+	    		 }
+	    	 });
+	    }	
+	    
+	    function draw24HCoordinates(){ 
+	    	//clear and delete previous markers if any
+	    	deleteMarkers();
+	    	var hours24 = new Date(Date.now() - 86400 * 1000).getTime();
+	    	$.get("g/allCoordinates", function(data, status){  
+	    		var locations  =  jQuery.parseJSON(data); 
+	    		 for (i = 0; i < locations.length; i++) {
+	    			 var date = new Date(locations[i].time);
+	    			 if(date.getTime() > hours24){
+	    			 setMultipleMarker(locations[i].lat,locations[i].log, locations[i].time);
+	    			 }
+	    		 }
+	    		 locations = null;
+	    	 });
+	    }
+	     //drawMarkerByPhone("0258589655");
+	    // drawCurrentLocations();
+	       drawAllCoordinates();
+	  // draw24HCoordinates();
+	  // setInterval(drawCurrentLocations,3000);
+	  
+	  //for testing last 24 hours
+	 // setInterval(draw24HCoordinates,10000);
+	  
+	</script>
+ </div>
+    <!-- Menu Toggle Script -->
+    <script>
+  /*  $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });*/
+    </script>
+
+
+ </body>
+</html>

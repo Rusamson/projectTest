@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+<div id="testDiv" >kkkkk</div>
+</body>
+</html>
+
+
+<script>
+$(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+});
+</script>
+<script type="text/javascript">
+    $().ready(function() {
+    	
+        var user1Location = "Amsterdam, Netherlands";
+        var geocoder = new google.maps.Geocoder();
+        //convert location into longitude and latitude
+        
+        geocoder.geocode({
+            address: user1Location
+        }, function(locResult) {
+            console.log(locResult);
+            
+            var lat1 = locResult[0].geometry.location.lat();
+            var lng1 = locResult[0].geometry.location.lng();
+            alert("test"+locResult);
+            $("#testDiv").html("latitude:" + lat1 + "<p>longitude:" + lng1 + "</p>");
+        });
+    });
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCs-5rItEDvTU4vsvlLzNtqNnUYXQnuLA&libraries=places&callback=initMap"
+        async defer></script>

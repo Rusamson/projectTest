@@ -2,7 +2,9 @@ package samson;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -16,6 +18,8 @@ import com.google.gson.GsonBuilder;
 
 import samson.model.Booking;
 import samson.model.User;
+import samson.model.Group;
+import samson.model.GroupRecord;
 
 /**
  * Servlet implementation class UserController
@@ -24,7 +28,9 @@ import samson.model.User;
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private static Map<String, User> userCache = new HashMap<String, User>();  
+	private static Map<String, User> userCache = new HashMap<String, User>(); 
+	private static Map<String, Group> groupCache = new HashMap<String, Group>();  
+	
 	   User u1 = new User("1","dolly","kamaliza","514 222 3500","dolly1@hotmail.com","dolly","15-04-1970","F","care"," rue Des Saules ","Mirabel","Canada","");
 	   User u2 = new User("2","angelos ","muhire ","514 444 3520","angelos1hotmail.com","angelos ","15-04-1990","F","care"," rue De Lublin "," Laval ","Canada","");
 	   User u3 = new User("3","jeannino ","Simone ","514 230 1500","jeannino1@hotmail.com","jeannino ","20-03-1985","F","care"," Lachapelle "," Montreal ","Canada","");
@@ -122,6 +128,58 @@ public class UserController extends HttpServlet {
 			        out.flush();
 			   }
 		   
+		   if(request.getParameter("operation").equals("addToGroup")) {
+		    String groupName = request.getParameter("groupName");
+		    String email = request.getParameter("email");
+		    User user = getUserByEmail(email);
+		    if(user != null) {
+		    GroupRecord groupRecord = new GroupRecord(user.getId(),user.getEmail(),user.getFirstname(), user.getSurname());
+		     if(groupCache.get(groupName) != null) {
+		    	 Group group = groupCache.get(groupName);
+		    	 group.add(groupRecord);
+		    	 groupCache.remove(groupName);
+		    	 groupCache.put(groupName, group);
+		    	 System.out.println("Group found and new user added");
+		     }else {
+		    	 Group group = new Group();
+		    	 group.add(groupRecord);
+		    	 groupCache.put(groupName, group);
+		    	 System.out.println(" New Group created and new user added");
+		     }
+		    }else {
+		    	System.out.println("user not found !");
+		    }
+			        out.flush();
+			   }		   
+		   if(request.getParameter("operation").equals("allGroups")) {
+					GsonBuilder gsonMapBuilder = new GsonBuilder();
+					Gson gsonObject = gsonMapBuilder.create();
+					String JSONObject = gsonObject.toJson(groupCache.values());
+					if(!JSONObject.equals("null")) {
+			        out.print(JSONObject);
+					}
+			        out.flush();
+			   }
+		   
+		   if(request.getParameter("operation").equals("user")) {
+				GsonBuilder gsonMapBuilder = new GsonBuilder();
+				Gson gsonObject = gsonMapBuilder.create();
+				String JSONObject = gsonObject.toJson(userCache.get(request.getParameter("id")));
+				if(!JSONObject.equals("null")) {
+		        out.print(JSONObject);
+				}
+		        out.flush();
+		   }
+		   
+		   if(request.getParameter("operation").equals("userAjax")) {
+				GsonBuilder gsonMapBuilder = new GsonBuilder();
+				Gson gsonObject = gsonMapBuilder.create();
+				String JSONObject = gsonObject.toJson(getUserByEmail(request.getParameter("email")));
+				if(!JSONObject.equals("null")) {
+		        out.print(JSONObject);
+				}
+		        out.flush();
+		   }
 		   
 		   
 	}
@@ -133,5 +191,20 @@ public class UserController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+    
+	private User getUserByEmail(String email) {
+        User user = null;
+	    Iterator<?> it = userCache.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next(); 
+	    	User currentUser = (User) pair.getValue();
+	    	if(currentUser.getEmail().equals(email)) {
+	    		user = currentUser;
+	    		break;
+	    	}
+	    }
+	    
+		return user;
+	} 
+ 
 }
