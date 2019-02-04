@@ -7,7 +7,7 @@
 <body>
 
 Email</br>
- <input   type="text" value="" name="email" /></br>
+ <input   type="text" value="dolly1@hotmail.com" name="email" /></br>
  
  <button id="filladdress"> Load Address </button></br>
  
@@ -18,33 +18,39 @@ City</br>
 Country </br>
    <input   type="text" value="" name="country" /></br>
    
- <button id="submit">Find Coordinates </button>
+ <button id="submit">Navigate To Location </button>
  
 <div id="testDiv" > Coordinates : </div>
 </body>
 </html>
  
 <script type="text/javascript">
-
+$(document).ready(function(){
+	
 $("#submit").click(function(){
     // alert(" Street : "+$("[name='street']").val());
      initMap();
   });
 $("#filladdress").click(function(){
-    //alert(" Street : "+$("[name='street']").val());
-    //initMap();
-    alert("is going to hapen");
-    var email = $("[name='email']").val();
-    $.ajax({url: "http://localhost:8080/projectTest/user?operation=userAjax&email="+email, success: function(result){
-      //  $("#div1").html(result);
-     // alert(result);
-      $("[name='street']").val(result.street);
-      $("[name='city']").val(result.city);
-      $("[name='country']").val(result.country);
-      
-      }});
+	fillData();
     
  }); 
+ 
+ function fillData(){
+	    //alert(" Street : "+$("[name='street']").val());
+	    //initMap();
+	   // alert("is going to hapen");
+	    var email = $("[name='email']").val();
+	    $.ajax({url: "http://localhost:8080/projectTest/user?operation=userAjax&email="+email, success: function(result){
+	      //  $("#div1").html(result);
+	      //alert(result);
+	      $("[name='street']").val(result.street);
+	      $("[name='city']").val(result.city);
+	      $("[name='country']").val(result.country);
+	      
+	      }});
+	 
+ }
  function initMap()
     	{
       //  var user1Location = "Amsterdam, Netherlands";
@@ -60,9 +66,22 @@ $("#filladdress").click(function(){
             var lat1 = locResult[0].geometry.location.lat();
             var lng1 = locResult[0].geometry.location.lng();
             //alert("test"+locResult);
-            $("#testDiv").html(" Coordinates :<br> latitude:" + lat1 + "<br>longitude:" + lng1 + "<br>");
+            
+            
+            window.location.href = 'https://www.google.com/maps/search/?api=1&query='+lat1+","+lng1;
+            
+          /*  var message = '<br> <a href="https://www.google.com/maps/search/?api=1&query='+lat1+","+lng1+'" > Navigate to LOcation </a> <br>'+" Coordinates :<br> latitude:" + lat1 + "<br>longitude:" + lng1 + "<br>";
+            $("#testDiv").html(message);*/
         });
         }
+ 
+
+ if($("[name='email']").val() != null || $("[name='email']").val() != ""){
+	// alert("I am in ");
+	 fillData();
+   //   initMap();
+ }
+ });
 </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCs-5rItEDvTU4vsvlLzNtqNnUYXQnuLA&libraries=places&callback=initMap"
         async defer></script>
